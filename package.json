@@ -1,0 +1,77 @@
+{
+  "name": "cli-template",
+  "version": "0.0.0",
+  "description": "Standard Template for building CLIs",
+  "author": "BMO",
+  "bin": {
+    "cli": "./bin/run.js"
+  },
+  "homepage": "https://github.com/BMO-tech/cli-template",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "type": "module",
+  "repository": "BMO-tech/cli-template",
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "dependencies": {
+    "@oclif/core": "^2",
+    "@oclif/plugin-help": "^5"
+  },
+  "devDependencies": {
+    "@oclif/test": "^2.3.16",
+    "@types/node": "^16.18.24",
+    "eslint": "^7.32.0",
+    "eslint-config-oclif": "^4",
+    "eslint-config-oclif-typescript": "^1.0.3",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "globby": "^13.1.4",
+    "nodemon": "^2.0.22",
+    "oclif": "^3",
+    "prettier": "^2.8.8",
+    "shx": "^0.3.3",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
+  },
+  "oclif": {
+    "bin": "cli",
+    "dirname": "cli",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help"
+    ],
+    "topicSeparator": " "
+  },
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "dev": "nodemon -x \"npm run build\"",
+    "lint": "eslint . --ext .ts --config .eslintrc",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "prepack": "npm run build && oclif manifest && oclif readme",
+    "version": "oclif readme && git add README.md"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "bugs": "https://github.com/BMO-tech/cli-template/issues",
+  "keywords": [
+    "oclif"
+  ],
+  "types": "dist/index.d.ts",
+  "nodemonConfig": {
+    "ignore": [
+      "bin/*"
+    ],
+    "watch": [
+      "src/"
+    ],
+    "ext": "ts"
+  }
+}

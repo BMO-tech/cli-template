@@ -1,0 +1,20 @@
+{
+  "extends": ["oclif", "oclif-typescript", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "unicorn/prefer-node-protocol": "off",
+    "unicorn/import-style": "off",
+    "import/no-unresolved": "error"
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts"]
+    }
+  },
+  "import/resolver": {
+    "typescript": {
+      "alwaysTryTypes": true
+    }
+  }
+}
