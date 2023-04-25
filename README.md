@@ -20,7 +20,7 @@ $ npm install -g cli-template
 $ cli COMMAND
 running command...
 $ cli (--version)
-cli-template/0.0.0 darwin-arm64 node-v18.16.0
+cli-template/0.1.0 darwin-arm64 node-v18.16.0
 $ cli --help [COMMAND]
 USAGE
   $ cli COMMAND
@@ -29,58 +29,30 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`cli hello PERSON`](#cli-hello-person)
-* [`cli hello world`](#cli-hello-world)
+* [`cli deploy`](#cli-deploy)
 * [`cli help [COMMANDS]`](#cli-help-commands)
-* [`cli plugins`](#cli-plugins)
-* [`cli plugins:install PLUGIN...`](#cli-pluginsinstall-plugin)
-* [`cli plugins:inspect PLUGIN...`](#cli-pluginsinspect-plugin)
-* [`cli plugins:install PLUGIN...`](#cli-pluginsinstall-plugin-1)
-* [`cli plugins:link PLUGIN`](#cli-pluginslink-plugin)
-* [`cli plugins:uninstall PLUGIN...`](#cli-pluginsuninstall-plugin)
-* [`cli plugins:uninstall PLUGIN...`](#cli-pluginsuninstall-plugin-1)
-* [`cli plugins:uninstall PLUGIN...`](#cli-pluginsuninstall-plugin-2)
-* [`cli plugins update`](#cli-plugins-update)
+* [`cli setup`](#cli-setup)
+* [`cli start`](#cli-start)
+* [`cli stop`](#cli-stop)
 
-## `cli hello PERSON`
+## `cli deploy`
 
-Say hello
+Deploy provided repositories
 
 ```
 USAGE
-  $ cli hello PERSON -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Who is saying hello
+  $ cli deploy
 
 DESCRIPTION
-  Say hello
+  Deploy provided repositories
 
 EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
+  $ cli deploy
+
+  $ cli deploy repo1 repo2
 ```
 
-_See code: [dist/commands/hello/index.ts](https://github.com/BMO-tech/cli-template/blob/v0.0.0/dist/commands/hello/index.ts)_
-
-## `cli hello world`
-
-Say hello world
-
-```
-USAGE
-  $ cli hello world
-
-DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ cli hello world
-  hello world! (./src/commands/hello/world.ts)
-```
+_See code: [dist/commands/deploy.ts](https://github.com/BMO-tech/cli-template/blob/v0.1.0/dist/commands/deploy.ts)_
 
 ## `cli help [COMMANDS]`
 
@@ -102,236 +74,63 @@ DESCRIPTION
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.2.9/src/commands/help.ts)_
 
-## `cli plugins`
+## `cli setup`
 
-List installed plugins.
+Sets up available repositories
 
 ```
 USAGE
-  $ cli plugins [--core]
+  $ cli setup [-d <value>]
 
 FLAGS
-  --core  Show core plugins.
+  -d, --directory=<value>  Set the root project directory
 
 DESCRIPTION
-  List installed plugins.
+  Sets up available repositories
 
 EXAMPLES
-  $ cli plugins
+  $ cli setup
+
+  $ cli setup repo1 repo2
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.4.6/src/commands/plugins/index.ts)_
+_See code: [dist/commands/setup.ts](https://github.com/BMO-tech/cli-template/blob/v0.1.0/dist/commands/setup.ts)_
 
-## `cli plugins:install PLUGIN...`
+## `cli start`
 
-Installs a plugin into the CLI.
+Start provided repositories
 
 ```
 USAGE
-  $ cli plugins:install PLUGIN...
-
-ARGUMENTS
-  PLUGIN  Plugin to install.
-
-FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
+  $ cli start
 
 DESCRIPTION
-  Installs a plugin into the CLI.
-  Can be installed from npm or a git url.
-
-  Installation of a user-installed plugin will override a core plugin.
-
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
-
-ALIASES
-  $ cli plugins add
+  Start provided repositories
 
 EXAMPLES
-  $ cli plugins:install myplugin 
+  $ cli start
 
-  $ cli plugins:install https://github.com/someuser/someplugin
-
-  $ cli plugins:install someuser/someplugin
+  $ cli start repo1 repo2
 ```
 
-## `cli plugins:inspect PLUGIN...`
+_See code: [dist/commands/start.ts](https://github.com/BMO-tech/cli-template/blob/v0.1.0/dist/commands/start.ts)_
 
-Displays installation properties of a plugin.
+## `cli stop`
+
+Stop provided repositories
 
 ```
 USAGE
-  $ cli plugins:inspect PLUGIN...
-
-ARGUMENTS
-  PLUGIN  [default: .] Plugin to inspect.
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-GLOBAL FLAGS
-  --json  Format output as json.
+  $ cli stop
 
 DESCRIPTION
-  Displays installation properties of a plugin.
+  Stop provided repositories
 
 EXAMPLES
-  $ cli plugins:inspect myplugin
+  $ cli stop
+
+  $ cli stop repo1 repo2
 ```
 
-## `cli plugins:install PLUGIN...`
-
-Installs a plugin into the CLI.
-
-```
-USAGE
-  $ cli plugins:install PLUGIN...
-
-ARGUMENTS
-  PLUGIN  Plugin to install.
-
-FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Installs a plugin into the CLI.
-  Can be installed from npm or a git url.
-
-  Installation of a user-installed plugin will override a core plugin.
-
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
-
-ALIASES
-  $ cli plugins add
-
-EXAMPLES
-  $ cli plugins:install myplugin 
-
-  $ cli plugins:install https://github.com/someuser/someplugin
-
-  $ cli plugins:install someuser/someplugin
-```
-
-## `cli plugins:link PLUGIN`
-
-Links a plugin into the CLI for development.
-
-```
-USAGE
-  $ cli plugins:link PLUGIN
-
-ARGUMENTS
-  PATH  [default: .] path to plugin
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Links a plugin into the CLI for development.
-  Installation of a linked plugin will override a user-installed or core plugin.
-
-  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello'
-  command will override the user-installed or core plugin implementation. This is useful for development work.
-
-
-EXAMPLES
-  $ cli plugins:link myplugin
-```
-
-## `cli plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ cli plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ cli plugins unlink
-  $ cli plugins remove
-```
-
-## `cli plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ cli plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ cli plugins unlink
-  $ cli plugins remove
-```
-
-## `cli plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ cli plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ cli plugins unlink
-  $ cli plugins remove
-```
-
-## `cli plugins update`
-
-Update installed plugins.
-
-```
-USAGE
-  $ cli plugins update [-h] [-v]
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Update installed plugins.
-```
+_See code: [dist/commands/stop.ts](https://github.com/BMO-tech/cli-template/blob/v0.1.0/dist/commands/stop.ts)_
 <!-- commandsstop -->
