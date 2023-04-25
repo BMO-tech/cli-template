@@ -17,6 +17,7 @@ export default class Setup extends Command {
     directory: Flags.string({
       char: "d",
       required: false,
+      description: "Set the root project directory",
     }),
   };
 
