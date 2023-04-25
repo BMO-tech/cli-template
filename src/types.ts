@@ -6,8 +6,6 @@ export interface ICommand {
 export interface IContext {
   projectDir: string;
   commandRoot: string;
-  dataDir: string;
-  cacheDir: string;
   cwd: string;
 }
 

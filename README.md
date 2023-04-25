@@ -5,15 +5,14 @@ Opinionated Oclif template for creating CLIs
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 
 <!-- toc -->
-
-- [Usage](#usage)
-- [Commands](#commands)
+* [Oclif CLI Template](#oclif-cli-template)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g cli-template
 $ cli COMMAND
@@ -25,18 +24,16 @@ USAGE
   $ cli COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [`cli deploy`](#cli-deploy)
-- [`cli help [COMMANDS]`](#cli-help-commands)
-- [`cli setup`](#cli-setup)
-- [`cli start`](#cli-start)
-- [`cli stop`](#cli-stop)
+* [`cli deploy`](#cli-deploy)
+* [`cli help [COMMANDS]`](#cli-help-commands)
+* [`cli setup`](#cli-setup)
+* [`cli start`](#cli-start)
+* [`cli stop`](#cli-stop)
 
 ## `cli deploy`
 
@@ -136,5 +133,4 @@ EXAMPLES
 ```
 
 _See code: [dist/commands/stop.ts](https://github.com/BMO-tech/cli-template/blob/v0.1.0/dist/commands/stop.ts)_
-
 <!-- commandsstop -->

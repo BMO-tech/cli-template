@@ -22,11 +22,13 @@ export function getRepoArgs(): ArgInput {
   }
 
   const repos = conf.get("repos") as string[];
-
   const args: Record<string, any> = {};
-  for (const repo of repos) {
-    args[repo] = Args.string();
-  }
+  repos.forEach((_repo, index) => {
+    args[`repo${index + 1}`] = Args.string({
+      required: false,
+      options: repos,
+    });
+  });
 
   return args;
 }

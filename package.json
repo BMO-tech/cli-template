@@ -20,7 +20,7 @@
     "@oclif/core": "^2",
     "@oclif/plugin-help": "^5",
     "conf": "^10.2.0",
-    "globby": "^13.1.4",
+    "globby": "^11.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
